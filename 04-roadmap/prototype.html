@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riverty – Income Transparency & Trust Prototype</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#243447;
+    line-height:1.5;
+}
+
+.container{
+    max-width:800px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.header{
+    background:#142c44;
+    color:white;
+    padding:24px;
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.content{
+    padding:32px;
+}
+
+.screen{
+    display:none;
+}
+
+.screen.active{
+    display:block;
+}
+
+.progress{
+    color:#557;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.trust-banner{
+    background:#eef7ff;
+    border-left:5px solid #0078d4;
+    padding:16px;
+    border-radius:8px;
+    margin-bottom:24px;
+}
+
+.trust-banner ul{
+    margin-top:10px;
+    margin-left:20px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #cdd6e1;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.help-link{
+    display:inline-block;
+    margin-top:10px;
+    color:#0078d4;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.card{
+    background:#f8fafc;
+    border:1px solid #e4e9f0;
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:16px;
+}
+
+.card h3{
+    margin-bottom:8px;
+    color:#183b56;
+}
+
+.example{
+    background:#fff8e8;
+    border:1px solid #f3d27a;
+    border-radius:8px;
+    padding:14px;
+    margin:14px 0;
+}
+
+.button-row{
+    margin-top:24px;
+}
+
+button{
+    border:none;
+    padding:14px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+}
+
+.primary{
+    background:#0078d4;
+    color:white;
+}
+
+.primary:hover{
+    background:#0063b1;
+}
+
+.secondary{
+    background:#e5e7eb;
+    color:#333;
+    margin-right:10px;
+}
+
+.error{
+    margin-top:10px;
+    color:#c62828;
+    display:none;
+}
+
+.success-box{
+    background:#e9f8ee;
+    border:1px solid #7fd199;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.timeline{
+    margin-top:15px;
+}
+
+.timeline li{
+    margin-bottom:10px;
+}
+
+.footer-note{
+    margin-top:20px;
+    background:#eef7ff;
+    padding:16px;
+    border-radius:8px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h1>Repayment Plan Assessment</h1>
+    <p>Helping you find a repayment option that works for your situation.</p>
+</div>
+
+<div class="content">
+
+    <section id="screen1" class="screen active">
+
+        <div class="progress">
+            Step 1 of 3 · Income Information
+        </div>
+
+        <h2>Tell us about your monthly income</h2>
+        <br>
+
+        <div class="trust-banner">
+            <strong>Why we're asking</strong>
+
+            <ul>
+                <li>We use income information to suggest a repayment plan you can realistically manage.</li>
+                <li>Your income does not determine whether you can create a repayment plan.</li>
+                <li>Providing accurate information helps us avoid suggesting payments that are too high.</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label>Estimated Monthly Income (€)</label>
+            <input id="income" type="number" placeholder="Example: 2600">
+        </div>
+
+        <div class="help-link" onclick="showScreen('screen2')">
+            Why are you asking for my income?
+        </div>
+
+        <div id="error" class="error">
+            Please enter an income amount before continuing.
+        </div>
+
+        <div class="button-row">
+            <button class="primary" onclick="validateIncome()">
+                Continue
+            </button>
+        </div>
+
+    </section>
+
+    <section id="screen2" class="screen">
+
+        <div class="progress">
+            Step 2 of 3 · Transparency & Trust
+        </div>
+
+        <h2>Why do we ask for income information?</h2>
+        <br>
+
+        <div class="card">
+            <h3>Why we ask</h3>
+            <p>
+         
