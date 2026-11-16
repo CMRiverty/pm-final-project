@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain explainer for why income is asked · Riverty BU Collection</title>
+<style>
+:root{
+  --bg:#07162C; --fg:#ffffff; --muted:#cbd5e1; --orange:#fb923c; --cyan:#22d3ee; --teal:#34d399;
+  --blue:#60a5fa; --violet:#a78bfa; --pink:#f472b6; --eyebrow:#fdba74;
+  --card:rgba(255,255,255,0.04); --line:rgba(251,146,60,0.25);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section{min-height:100vh;scroll-snap-align:start;padding:clamp(40px,7vh,84px) clamp(24px,7vw,110px);display:flex;flex-direction:column;justify-content:center;gap:28px;position:relative}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--eyebrow);font-size:.78rem;margin:0}
+h1{font-size:clamp(2.2rem,5.2vw,4.2rem);line-height:1.05;margin:0;letter-spacing:-.02em;max-width:18ch}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.12;margin:0;letter-spacing:-.015em;max-width:28ch}
+h3{font-size:1.05rem;margin:0 0 10px;color:var(--fg)}
+p{margin:0 0 10px;color:var(--muted);max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px 24px}
+.hero{background:linear-gradient(135deg,rgba(251,146,60,.16),rgba(167,139,250,.10));box-shadow:0 14px 38px rgba(0,0,0,.35)}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.label{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--eyebrow);display:block;margin-bottom:8px}
+.mono{font-family:var(--mono)}
+.callout{border-left:4px solid var(--orange);background:rgba(251,146,60,.09);border-radius:0 14px 14px 0;padding:20px 24px}
+.callout p{color:var(--fg);font-size:1.08rem;margin:0;max-width:none}
+.callout.bad{border-left-color:var(--pink);background:rgba(244,114,182,.09)}
+.pill{display:inline-block;font-family:var(--mono);font-size:.82rem;padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--fg);background:rgba(251,146,60,.12)}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.placeholder{color:#94a3b8;border:1px dashed rgba(203,213,225,.4);border-radius:10px;padding:6px 12px;font-style:italic;display:inline-block}
+.big{font-family:var(--mono);font-size:clamp(1.6rem,3vw,2.3rem);color:var(--orange);margin:0 0 4px;line-height:1.1}
+.cyan{color:var(--cyan)} .teal{color:var(--teal)} .blue{color:var(--blue)} .violet{color:var(--violet)} .pink{color:var(--pink)}
+ul.tight{margin:0;padding-left:1.1em;color:var(--muted)} ul.tight li{margin-bottom:6px}
+.col h3{display:flex;align-items:center;gap:8px}
+.col.now{border-color:var(--orange)} .col.next{border-color:rgba(96,165,250,.45)} .col.later{border-color:rgba(167,139,250,.4)}
+.item{font-size:.92rem;color:var(--muted);margin:0 0 10px}
+.item b{color:var(--fg)}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top;color:var(--muted)}
+td:first-child{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--eyebrow);width:38%}
+td strong{color:var(--fg);font-weight:600}
+.journey{display:grid;grid-template-columns:1.3fr repeat(5,1fr);gap:10px;align-items:stretch}
+@media (max-width:1100px){.journey{grid-template-columns:1fr}}
+.node{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px;font-size:.84rem;color:var(--muted)}
+.node b{display:block;color:var(--fg);margin-bottom:4px;font-size:.9rem}
+.node.misery{border:1px solid var(--pink);background:rgba(244,114,182,.12);box-shadow:0 10px 28px rgba(244,114,182,.15)}
+.node.misery b{color:var(--pink)}
+.quote{font-size:1.05rem;color:var(--fg);border-left:3px solid var(--cyan);padding-left:14px;margin:0;max-width:60ch}
+.link{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(34,211,238,.4)}
+.link:focus-visible,.dots a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--orange),var(--pink));z-index:50}
+.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:40}
+.dots a{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--muted);display:block;background:transparent}
+.dots a.on{background:var(--orange);border-color:var(--orange)}
+@media (max-width:700px){.dots{display:none}}
+.source{font-family:var(--mono);font-size:.72rem;color:#94a3b8;margin-top:4px}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<nav class="dots" id="dots" aria-label="Slide navigation"></nav>
+
+<!-- 1. COVER -->
+<section id="s1" data-title="Cover">
+  <p class="eyebrow">Product School · PM certification · Final project</p>
+  <h1>Plain explainer for why income is asked</h1>
+  <p style="font-size:1.25rem;color:var(--fg);max-width:46ch">Riverty BU Collection · A Fair Way Forward</p>
+  <div class="card hero" style="max-width:820px">
+    <span class="label">One-line pitch</span>
+    <p style="color:var(--fg);font-size:1.15rem;margin:0">Consumers who need help the most are abandoning digital repayment plans because they don’t understand or trust them, driving costly agent contacts, failed repayment outcomes, and lost recovery value for Riverty.</p>
+  </div>
+  <div class="grid g3" style="max-width:900px">
+    <div><span class="label">Name · cohort</span><span style="color:var(--fg)">Christian Modenius, Product Manager</span><br><span style="color:var(--muted)">Cohort 2 · BU Collection</span></div>
+    <div><span class="label">Repo</span><a class="link mono" href="https://github.com/CMRiverty/pm-final-project">github.com/CMRiverty/pm-final-project</a></div>
+    <div><span class="label">Prototype file</span><span class="mono" style="color:var(--fg)">04-roadmap/prototype.html</span></div>
+  </div>
+</section>
+
+<!-- 2. STRATEGY -->
+<section id="s2" data-title="Strategy">
+  <p class="eyebrow">Slide 5 · Strategy</p>
+  <h2>People drop out where they stop trusting the plan</h2>
+  <div class="grid g2">
+    <div class="card"><span class="label">Problem hook</span>
+      <p style="color:var(--fg)">Consumers who need help the most are abandoning digital repayment plans because they don’t understand or trust them, driving costly agent contacts, failed repayment outcomes, and lost recovery value for Riverty.</p>
+      <p>Doing nothing means higher servicing costs, flat self-service rates, and a growing competitive gap as competitors digitize debt resolution more effectively.</p>
+    </div>
+    <div class="card"><span class="label">Value proposition</span>
+      <p style="color:var(--fg)">For consumers who need a repayment plan, we will enable them to understand, trust, and set up a sustainable payment agreement digitally. This creates better outcomes for consumers and lower servicing costs for Riverty.</p>
+      <p>It is urgent because today’s experience drives avoidable agent contacts, failed repayment plans, and limits growth in Self-Service Rate (SSR).</p>
+    </div>
+  </div>
+  <div class="callout"><span class="label">Hypothesis</span>
+    <p>Based on interview findings showing that consumers are uncertain about why income information is required, combined with quantitative evidence that the largest funnel drop occurs between the income document step and plan review (77.9% continuation rate) and that 16.2% of agent contacts concern why income is requested, we believe that improving transparency and guidance around affordability and income verification for hesitant planners will increase repayment-plan agreement rates from 46% to 50%, while maintaining the missed-payment rate at or below the current 19% baseline. In the test, the boundary is 20.0%: investigate if the missed-payment rate reaches it.</p>
+  </div>
+</section>
+
+<!-- 3. RESEARCH -->
+<section id="s3" data-title="Research">
+  <p class="eyebrow">Slide 6 · Research</p>
+  <h2>Mara leaves the portal to find answers the product should give</h2>
+  <div class="grid g2">
+    <div class="card">
+      <span class="label">Persona</span>
+      <p style="color:var(--fg)"><b>Mara the Hesitant Planner:</b> a shift worker with multiple open claims who wants to resolve debt digitally but has limited time and variable income.</p>
+      <p><b style="color:var(--fg)">Goal:</b> set up a repayment plan she can afford without making her financial situation worse.</p>
+      <span class="label" style="margin-top:14px">Workarounds outside the product</span>
+      <div class="pills">
+        <span class="pill">Google Search</span><span class="pill">Banking app</span><span class="pill">Calculator / spreadsheet</span>
+        <span class="pill">Payslips</span><span class="pill">Friends and family</span><span class="pill">Phone support</span>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label">Evidence</span>
+      <p class="quote">“It asked for my income and I did not know if they meant this month or a normal month. I closed it and meant to come back.”</p>
+      <p class="source">Direct quote, N-01</p>
+      <p style="margin-top:12px">Google searches she runs: “What income should I enter?”, “Why does a debt collector need my income?”, “What happens if I miss a payment?”</p>
+    </div>
+  </div>
+  <div>
+    <span class="label">Journey map · moment of misery highlighted</span>
+    <div class="journey">
+      <div class="node misery"><b>Moment of misery</b>Mara reaches the income form, realizes she doesn’t understand what information is being requested or why Riverty needs it, and abandons the journey because she’s afraid of making a costly mistake.</div>
+      <div class="node"><b>Exit the repayment flow</b>Closes the portal and decides to come back later.</div>
+      <div class="node"><b>Gather income information</b>Opens banking apps and reviews payslips to estimate her “normal” monthly income.</div>
+      <div class="node"><b>Calculate affordability</b>Uses a calculator, notes app, or spreadsheet to compare income, expenses, and payments.</div>
+      <div class="node"><b>Look for answers elsewhere</b>Searches Google or asks friends and family what income to enter and whether sharing it is safe.</div>
+      <div class="node"><b>Contact customer support</b>Calls an agent to understand why income is needed and whether a wrong entry could affect the outcome.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. BLUEPRINT -->
+<section id="s4" data-title="Blueprint">
+  <p class="eyebrow">Slide 7 · Blueprint</p>
+  <h2>One quick win now, the bigger bets next</h2>
+  <div class="grid g3">
+    <div class="card col now hero">
+      <h3 class="" style="color:var(--orange)">Now · this sprint</h3>
+      <p class="item"><b>B2 Plain explainer for why income is asked.</b> Directly addresses a major source of confusion and agent contacts with minimal effort.</p>
+    </div>
+    <div class="card col next">
+      <h3 style="color:var(--blue)">Next · following sprints</h3>
+      <p class="item"><b>B1 One plan for several open claims.</b> Users with 2+ claims have the lowest agreement rates.</p>
+      <p class="item"><b>B3 Affordability check before plan options.</b> Helps consumers choose sustainable plans.</p>
+      <p class="item"><b>B5 Mobile photo upload fix / document skip.</b> Known bug at the largest funnel drop.</p>
+      <p class="item"><b>B6 Pick payment date matching payday.</b> Valuable for variable income.</p>
+    </div>
+    <div class="card col later">
+      <h3 style="color:var(--violet)">Later · backlog</h3>
+      <p class="item"><b>B4 Handoff summary for the agent.</b> Improves support efficiency, not the primary friction.</p>
+      <p class="item"><b>B7 Show shortest plan first.</b> Increased agreements but also missed payments, hurting the guardrail.</p>
+      <h3 style="color:var(--pink);margin-top:16px">Cut</h3>
+      <p class="item"><b>B8 Chat assistant on every page.</b> Broad improvement but weaker evidence.</p>
+    </div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><span class="label">PRD highlights · B2 must-haves</span>
+      <ul class="tight">
+        <li>Explain why income is requested.</li>
+        <li>Explain how it affects plan recommendations.</li>
+        <li>Explain how data is stored and protected.</li>
+        <li>Explain why accurate income information benefits the customer.</li>
+        <li>Make explanations available directly from the income-entry screen.</li>
+      </ul>
+    </div>
+    <div class="card"><span class="label">What the prototype changed</span>
+      <p>The prototype revealed that users need reassurance before opening the detailed explanation, so reassurance now appears immediately on the income-entry screen.</p>
+      <span class="label" style="margin-top:12px">Prototype</span>
+      <span class="pill">04-roadmap/prototype.html</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5. VALIDATION -->
+<section id="s5" data-title="Validation">
+  <p class="eyebrow">Slide 8 · Validation</p>
+  <h2>A/B test: does the explainer lift agreement without hurting repayment?</h2>
+  <div class="grid g2">
+    <div class="card"><span class="label">Control (A) vs variant (B)</span>
+      <p><b style="color:var(--fg)">Control:</b> the current income-entry screen, which asks for income without explaining why it is needed or how it is used.</p>
+      <p><b style="color:var(--fg)">Variant:</b> the same screen with one change: a short reassurance text at the top, and a full explanation one tap away.</p>
+      <p><b style="color:var(--fg)">Held constant:</b> app version, eligibility rules, income questions and fields, document upload flow, plan options and their order, reminders and notifications, onboarding, and agent screens.</p>
+    </div>
+    <div class="card"><table>
+      <tr><td>Primary metric</td><td><strong>Repayment-plan agreement rate</strong></td></tr>
+      <tr><td>Baseline</td><td><strong>46.0%</strong></td></tr>
+      <tr><td>MDE</td><td><strong>+4 pts</strong></td></tr>
+      <tr><td>Sample / arm</td><td><strong>2,448</strong></td></tr>
+      <tr><td>Split</td><td><strong>50 / 50</strong></td></tr>
+      <tr><td>Duration</td><td>Minimum 14 days (≥ 2 weekly cycles), or until the sample size per arm is reached</td></tr>
+      <tr><td>Significance</td><td><strong>p &lt; 0.05 (95%)</strong></td></tr>
+      <tr><td>Guardrail</td><td><strong>60-day missed-payment rate</strong>, baseline 19.0%, must not reach 20.0% (+1 pp); investigate if it does</td></tr>
+    </table></div>
+  </div>
+  <div class="grid g3">
+    <div class="card" style="border-color:var(--teal)"><span class="label" style="color:var(--teal)">Ship</span><p style="margin:0">Agreement improves by at least +4 pp at p &lt; 0.05 and the guardrail holds.</p></div>
+    <div class="card" style="border-color:var(--blue)"><span class="label" style="color:var(--blue)">Iterate</span><p style="margin:0">Direction is positive but the lift is below +4 pp.</p></div>
+    <div class="card" style="border-color:var(--pink)"><span class="label" style="color:var(--pink)">Kill</span><p style="margin:0">No improvement, or the primary metric moves negatively.</p></div>
+  </div>
+</section>
+
+<!-- 6. LAUNCH -->
+<section id="s6" data-title="Launch">
+  <p class="eyebrow">Slide 9 · Launch</p>
+  <h2>A small, owned launch: the screen itself is the channel</h2>
+  <div class="grid g2">
+    <div class="card hero"><span class="label">GTM strategy</span>
+      <div class="pills" style="margin-bottom:14px">
+        <span class="pill" style="border-color:var(--orange)">Goal: Conversion</span>
+        <span class="pill" style="border-color:var(--cyan)">Tier: S (minimal)</span>
+        <span class="pill" style="border-color:var(--teal)">Owned</span>
+      </div>
+      <p><b style="color:var(--fg)">Audience:</b> existing consumers in the Collection digital repayment flow who reach the income-entry screen, with the most focus on those with multiple open claims or variable income (like Mara): 27.6% agreement for 3+ claims, 41.6% for variable income.</p>
+      <p><b style="color:var(--fg)">Why S:</b> a text change inside an existing screen, no new product or pricing. Mostly a release, with light internal enablement so agents give the same explanation as the screen.</p>
+    </div>
+    <div class="card"><span class="label">Top three channels, all owned</span>
+      <div class="pills" style="margin-bottom:10px">
+        <span class="pill" style="border-color:var(--orange)">Income-entry screen</span>
+        <span class="pill" style="border-color:var(--cyan)">Phone support and agents</span>
+        <span class="pill" style="border-color:var(--teal)">Reminder message (email or SMS)</span>
+      </div>
+      <p class="item">The screen is where the audience hesitates; agents give the same explanation; the reminder adds one line on why income is asked.</p>
+      <span class="label" style="margin-top:12px">Enablement</span>
+      <p class="item">One-pager with the exact screen wording, short FAQ, updated call script, two-minute demo. Privacy/legal confirm the data-retention wording before launch.</p>
+      <span class="label" style="margin-top:12px">Owners (roles)</span>
+      <p class="item" style="margin:0">Product Manager: plan, A/B test, go/no-go. UX designer: screen. Engineer: build and feature flag. Legal/privacy: data wording. Agent team lead: one-pager and briefing.</p>
+    </div>
+  </div>
+  <div class="grid g3">
+    <div class="card" style="border-color:var(--orange)"><span class="label">Phase 1 · beta</span><p style="margin:0">50/50 A/B test for at least 14 days, or until the sample size per arm is reached. Agents briefed before it starts.</p></div>
+    <div class="card" style="border-color:var(--blue)"><span class="label" style="color:var(--blue)">Phase 2 · launch moment</span><p style="margin:0">If the shipping criteria are met, roll out to 100% and send agents the one-pager and call script.</p></div>
+    <div class="card" style="border-color:var(--violet)"><span class="label" style="color:var(--violet)">Phase 3 · post-launch</span><p style="margin:0">Monitor agreement rate and the 60-day missed-payment guardrail; review at 30 days. Assumes the test meets its criteria.</p></div>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="big">46% → 50%</div><p style="margin:0">Repayment-plan agreement rate (+4 pp)</p></div>
+    <div class="card"><div class="big cyan">77.9%</div><p style="margin:0">Continue from income document step to plan review today; expected to rise</p></div>
+    <div class="card"><div class="big teal">16.2%</div><p style="margin:0">Agent contacts about “why income is asked” today; expected to fall</p></div>
+  </div>
+  <div class="callout bad"><span class="label" style="color:var(--pink)">Bad signal to watch for</span>
+    <p>Agreement rate rises but the 60-day missed-payment rate reaches 20.0% (+1 pp), meaning more people agree to plans they cannot sustain. Also: many users open the explanation but continuation past the income step does not improve.</p>
+  </div>
+  <p style="margin:0"><b style="color:var(--fg)">Most likely post-launch decision: double down.</b> If agreement improves by at least +4 pp with the guardrail holding, roll out to 100% and move on to B3.</p>
+</section>
+
+<!-- 7. STORY -->
+<section id="s7" data-title="Story">
+  <p class="eyebrow">Slide 10 · Story</p>
+  <h2>What the data and the prototype taught me</h2>
+  <div class="grid g2">
+    <div class="card"><span class="label">Friction points</span>
+      <ul class="tight">
+        <li>Only 77.9% continue from the income document step to plan review.</li>
+        <li>16.2% of agent contacts are about why income is asked.</li>
+        <li>Agreement is 27.6% for users with 3+ claims, against 52.1% for a single claim.</li>
+        <li>Showing the six-month plan first raised agreement (44.2% → 46.0%) but also missed payments (15.6% → 19.0%).</li>
+      </ul>
+    </div>
+    <div class="card hero"><span class="label">Aha moment</span>
+      <p style="color:var(--fg);font-size:1.1rem">The prototype showed that trust information only lived inside the explainer. Users need reassurance <em style="font-style:normal">before</em> they open it, so a short reassurance moved onto the income-entry screen.</p>
+    </div>
+  </div>
+  <div class="card"><span class="label">Key takeaways</span>
+    <ul class="tight">
+      <li><b style="color:var(--fg)">The guardrail matters as much as the goal.</b> Missed payments became a guardrail with a clear boundary.</li>
+      <li><b style="color:var(--fg)">Sample size changed the plan.</b> Detecting +4 pp from a 46% baseline needs 2,448 per arm, not the 1,000 journeys first assumed.</li>
+      <li><b style="color:var(--fg)">AI executes, the PM decides.</b> The strategy only became useful once I brought the thinking myself.</li>
+      <li><b style="color:var(--fg)">Match the launch to the feature.</b> A feature inside an existing flow calls for conversion and a small, owned launch.</li>
+    </ul>
+  </div>
+  <p style="margin:0"><b style="color:var(--fg)">Next:</b> run the test and read it only at the fixed read date, confirm the data-retention wording with legal, and if the criteria are met move on to B3, the affordability check before plan options.</p>
+</section>
+
+<!-- 8. THANK YOU -->
+<section id="s8" data-title="Submit" style="align-items:flex-start">
+  <p class="eyebrow">Thank you</p>
+  <h1>Questions and feedback</h1>
+  <div class="card hero" style="max-width:720px">
+    <span class="label">Repo</span>
+    <a class="link mono" href="https://github.com/CMRiverty/pm-final-project" style="font-size:1.1rem">https://github.com/CMRiverty/pm-final-project</a>
+    <span class="label" style="margin-top:16px">Cohort</span>
+    <span style="color:var(--fg)">Cohort 2 · BU Collection</span>
+  </div>
+  <span class="pill" style="border-color:var(--orange);font-size:.95rem;padding:10px 20px">Submit to the learning platform: repo link and this deck file</span>
+</section>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section'));
+  var dots=document.getElementById('dots');
+  secs.forEach(function(s,i){
+    var a=document.createElement('a');
+    a.href='#'+s.id; a.setAttribute('aria-label','Go to slide '+(i+1)+': '+s.dataset.title);
+    a.addEventListener('click',function(e){e.preventDefault();go(i);});
+    dots.appendChild(a);
+  });
+  var dotEls=[].slice.call(dots.children);
+  var cur=0;
+  function go(i){
+    cur=Math.max(0,Math.min(secs.length-1,i));
+    secs[cur].scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  function update(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    document.getElementById('progress').style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+    var mid=window.scrollY+window.innerHeight/2;
+    secs.forEach(function(s,i){
+      if(mid>=s.offsetTop && mid<s.offsetTop+s.offsetHeight){cur=i;}
+    });
+    dotEls.forEach(function(d,i){d.classList.toggle('on',i===cur);});
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  document.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowDown'||k===' '||k==='PageDown'){e.preventDefault();go(cur+1);}
+    else if(k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(cur-1);}
+    else if(k==='Home'){e.preventDefault();go(0);}
+    else if(k==='End'){e.preventDefault();go(secs.length-1);}
+    else if(k==='Escape'){go(0);}
+  });
+  update();
+})();
+</script>
+</body>
+</html>
