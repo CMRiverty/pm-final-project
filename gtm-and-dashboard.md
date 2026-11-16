@@ -1,0 +1,34 @@
+# GTM Strategy & Success Dashboard (Module 6)
+
+## Get your prior work ready
+- **The feature you're launching from your M4 PRD, one feature, not a list:** B2 – Plain explainer for why income is asked: short reassurance on the income-entry screen, with a full explanation one tap away.
+- **What your M5 experiment will test your hypothesis, primary metric and ship / iterate rule, the evidence the launch rests on:** Hypothesis: explaining why income is requested and how it is used will help hesitant planners continue past the income step, raising repayment-plan agreement from 46% to 50% while the 60-day missed-payment rate stays below 20.0%. Ship if agreement improves by at least +4 pp at p < 0.05 and the guardrail holds; iterate if the lift is positive but below +4 pp; kill if there is no improvement or it moves negatively.
+- **Your persona pull your M2 persona, this anchors your audience:** Mara the Hesitant Planner, a shift worker with multiple open claims and variable income who wants to set up a repayment plan digitally.
+
+## Set your goal, then your audience
+- **Primary GTM goal awareness · engagement · conversion, pick one:** Conversion
+- **Why this goal? what makes this the right goal for this feature right now:** B2 lives inside the existing repayment-plan flow, so there is nothing new to make people aware of. The problem is that consumers drop off at the income step (only 77.9% continue to plan review), so success is measured by how many more complete and agree to a plan, which is the agreement rate.
+- **Target audience the specific segment your goal implies, be precise:** Existing consumers in the Collection digital repayment flow who reach the income-entry screen, with the most focus on those with multiple open claims or variable income (like Mara), who have the lowest agreement rates (27.6% for 3+ claims, 41.6% for variable income).
+
+## Size your launch
+- **Launch tier S (minimal) · M (targeted) · L (multi-channel) · XL (full GTM):** S (minimal)
+- **Justification reach + revenue impact + what silence would risk:** Reach is limited to consumers who reach the income-entry screen in the digital repayment flow. The feature is a text change inside an existing screen, with no new product or pricing. Revenue impact comes from a possible +4 pp in agreement rate, and silence carries little risk: the explainer is visible exactly where users hesitate, so it works without a campaign. The one thing that does need communication is internal, since agents field 16.2% of their contacts about why income is asked.
+- **Is this a launch or a release? does it need go-to-market, or can it just ship?:** Mostly a release: it can ship without external go-to-market. It still needs light internal enablement so agents and support give the same explanation as the screen.
+
+## Choose your top three channels and plan assets
+- **Channel 1 owned / earned / paid, and why it reaches your audience:** Owned: the income-entry screen in the digital repayment flow. This is exactly where the audience hesitates, so the reassurance text and the explanation reach every consumer at the moment of doubt.
+- **Channel 2 owned / earned / paid, and why:** Owned: phone support and agent conversations. Consumers who still call to ask why income is requested get the same explanation as on the screen, so the digital and human channels say the same thing.
+- **Channel 3 owned / earned / paid, and why:** Owned: the existing reminder message (email or SMS) sent to consumers who started the flow but did not finish, with one added line on why income is asked and a link back to the income step.
+- **Enablement & assets what Sales / CS / Support need, plus the assets to build (one-pager, demo, etc.):** Agents and support need a one-pager with the exact wording from the screen, a short FAQ on “why is income asked, how is it used and stored”, an updated call script, and a two-minute demo of the new screen. Privacy/legal must confirm the wording on data storage and retention before launch. Success is tracked by a drop in the share of contacts about why income is asked (16.2% today).
+
+## Make it executable
+- **Ownership named owner per key activity, individual, not department:** Product Manager (me): overall plan, A/B test, go/no-go decision. [Name], UX designer: reassurance text and explanation screen. [Name], engineer: implementation and feature flag. [Name], legal/privacy: approval of the wording on data storage and retention. [Name], agent team lead: one-pager, call script and agent briefing.
+- **Budget & resource gaps what costs extra, and any asset you can't currently build:** Extra cost: design and development time for the two screen elements, legal/privacy review time, and agent training time for the briefing. No paid media is needed. Gap: the retention period for income data is not known to me, so the explanation cannot be finalised until legal confirms it. No budget figures are set yet; to be estimated with the owners above.
+- **Timeline Phase 1 beta → Phase 2 launch moment → Phase 3 post-launch:** Phase 1, beta: 50/50 A/B test on the income-entry screen for at least 14 days, or until the sample size per arm is reached; agents briefed before it starts. Phase 2, launch moment: if the shipping criteria are met, roll the explainer out to 100% of users and send the agent one-pager and updated call script. Phase 3, post-launch: monitor agreement rate and the 60-day missed-payment guardrail, and track the share of contacts about why income is asked (16.2% today); review at 30 days. Assumes the M5 test meets its shipping criteria.
+
+## Define how you'll know it worked
+- **Success metrics 2 to 3 metrics that match your GTM goal:** Repayment-plan agreement rate: 46.0% → 50.0% (+4 pp).
+Continuation rate from the income document step to plan review: 77.9% today, expected to rise.
+Share of agent contacts about “why income is asked”: 16.2% today, expected to fall.
+- **Bad signal to watch for e.g. high reach, zero signups = message-market mismatch:** Agreement rate rises but the 60-day missed-payment rate reaches 20.0% (+1 pp), meaning more people agree to plans they cannot sustain. Also: many users open the explanation but continuation past the income step does not improve, or contacts about why income is asked stay at about 16%. Either would mean the explanation does not answer Mara’s real question
+- **Most likely post-launch decision double-down · iterate · pivot · deprioritize, and what would trigger it:** Double down. If agreement improves by at least +4 pp with the missed-payment guardrail holding, roll out to 100% and move on to B3 (affordability check before plan options). Iterate instead if the lift is positive but below +4 pp, for example by rewording the “this month or a normal month” question. Deprioritise if the primary metric shows no improvement.
